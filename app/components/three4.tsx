@@ -3,7 +3,7 @@ import * as THREE from 'three';
 import { useNavigate } from '@remix-run/react';
 import 'tailwindcss/tailwind.css';
 
-const DaCubes: React.FC = () => {
+const DaCubes4: React.FC = () => {
     const mountRef = useRef<HTMLDivElement>(null);
     const navigate = useNavigate();
 
@@ -17,14 +17,19 @@ const DaCubes: React.FC = () => {
         renderer.setSize(window.innerWidth, window.innerHeight);
         mountRef.current.appendChild(renderer.domElement);
 
-        // Create cubes with random sizes and positions
-        const labels = ['art', 'music', 'art2', 'art3', 'art4'];
-        const cubes: { mesh: THREE.Mesh; velocity: THREE.Vector3 }[] = [];
-        for (let i = 0; i < labels.length; i++) {
-            const size = (Math.random() * 1 + 0.5) * 2; // Cube size between 1 and 3
-            const geometry = new THREE.BoxGeometry(size, size, size);
+        // Manually defined cube names and links
+        const cubeData = [
+            { name: 'Home', link: '/home' },
+            { name: 'About', link: '/about' },
+            { name: 'Services', link: '/services' },
+            { name: 'Contact', link: '/contact' },
+            { name: 'Portfolio', link: '/portfolio' },
+        ];
 
-            // Neon colors for dark mode
+        const cubes: { mesh: THREE.Mesh; velocity: THREE.Vector3 }[] = [];
+        cubeData.forEach((data, i) => {
+            const size = (Math.random() * 1 + 0.5) * 4; // Larger cubes, size between 2 and 4
+            const geometry = new THREE.DodecahedronGeometry(size); // Stranger shape
             const material = new THREE.MeshStandardMaterial({
                 color: new THREE.Color(`hsl(${Math.random() * 360}, 100%, 50%)`),
                 emissive: new THREE.Color(`hsl(${Math.random() * 360}, 100%, 50%)`),
@@ -37,14 +42,14 @@ const DaCubes: React.FC = () => {
             const canvas = document.createElement('canvas');
             const context = canvas.getContext('2d');
             if (context) {
-                canvas.width = 256;
-                canvas.height = 256;
+                canvas.width = 512; // Larger canvas for larger cubes
+                canvas.height = 512;
                 context.fillStyle = 'black';
                 context.fillRect(0, 0, canvas.width, canvas.height);
-                context.font = 'Bold 48px Arial';
+                context.font = 'Bold 72px Arial';
                 context.fillStyle = 'white';
                 context.textAlign = 'center';
-                context.fillText(labels[i], canvas.width / 2, canvas.height / 2);
+                context.fillText(data.name, canvas.width / 2, canvas.height / 2);
 
                 const textTexture = new THREE.CanvasTexture(canvas);
                 const textMaterial = new THREE.MeshBasicMaterial({ map: textTexture });
@@ -61,19 +66,19 @@ const DaCubes: React.FC = () => {
                 Math.random() * 10 - 5
             );
 
-            // Make cube clickable
-            cube.userData = { path: `/page${i + 1}` };
+            // Set custom link path
+            cube.userData = { path: data.link };
 
             scene.add(cube);
             cubes.push({
                 mesh: cube,
                 velocity: new THREE.Vector3(
-                    (Math.random() - 0.5) * 0.2,
-                    (Math.random() - 0.5) * 0.2,
-                    (Math.random() - 0.5) * 0.2
+                    (Math.random() - 0.5) * 0.1,
+                    (Math.random() - 0.5) * 0.1,
+                    (Math.random() - 0.5) * 0.1
                 ),
             });
-        }
+        });
 
         // Add lighting
         const ambientLight = new THREE.AmbientLight(0xffffff, 0.2);
@@ -83,7 +88,7 @@ const DaCubes: React.FC = () => {
         scene.add(pointLight);
 
         // Set camera position
-        camera.position.z = 15;
+        camera.position.z = 20;
 
         // Handle window resize
         const handleResize = () => {
@@ -119,9 +124,9 @@ const DaCubes: React.FC = () => {
 
                 // Reverse direction if the cube moves too far from the center
                 if (
-                    Math.abs(mesh.position.x) > 5 ||
-                    Math.abs(mesh.position.y) > 5 ||
-                    Math.abs(mesh.position.z) > 5
+                    Math.abs(mesh.position.x) > 10 ||
+                    Math.abs(mesh.position.y) > 10 ||
+                    Math.abs(mesh.position.z) > 10
                 ) {
                     velocity.negate();
                 }
@@ -153,4 +158,4 @@ const DaCubes: React.FC = () => {
     return <div ref={mountRef} className="w-full h-screen bg-gray-900" />;
 };
 
-export default DaCubes;
+export default DaCubes4;

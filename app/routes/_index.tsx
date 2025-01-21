@@ -1,7 +1,7 @@
 import React from "react";
 import Navbar from "~/components/navbar";
 import type { MetaFunction } from "@remix-run/node";
-import DaCubes from "~/components/three1";
+import DaCubes4 from "~/components/three4";
 
 export const meta: MetaFunction = () => {
   return [
@@ -37,7 +37,7 @@ export default function Index() {
             <p className="leading-6 text-gray-700 dark:text-gray-200">
               What&apos;s next?
             </p>
-            <DaCubes />
+            <DaCubes4 />
             <ul>
               {resources.map(({ href, text, icon }) => (
                 <li key={href}>
