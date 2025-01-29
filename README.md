@@ -1,6 +1,6 @@
-# Welcome to Remix!
+# Welcome to my 3d portfolio page!
 
-- 📖 [Remix docs](https://remix.run/docs)
+- Its built on Remix and Vite 📖 [Remix docs](https://remix.run/docs)
 
 ## Development
 
@@ -38,3 +38,28 @@ Make sure to deploy the output of `npm run build`
 ## Styling
 
 This template comes with [Tailwind CSS](https://tailwindcss.com/) already configured for a simple default starting experience. You can use whatever css framework you prefer. See the [Vite docs on css](https://vitejs.dev/guide/features.html#css) for more information.
+
+
+## adding glb 
+
+<DaCubes4 
+  cubes={[
+    { 
+      name: 'Bunny', 
+      link: '/pets',
+      modelUrl: '/models/cute_bunny.glb' 
+    },
+    { 
+      name: 'Cloud', 
+      link: '/weather',
+      modelUrl: '/models/fluffy_cloud.glb' 
+    },
+    {
+      name: 'Star',
+      link: '/space',
+      modelUrl: '/models/sparkly_star.glb'
+    }
+  ]}
+  movementIntensity={0.7}
+  textSize={0.8}
+/>
