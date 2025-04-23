@@ -24,9 +24,9 @@ export default function Index() {
     <div className="min-h-screen bg-gray-900">
       <Navbar 
         links={[
-          { href: "#home", text: "Home" },
-          { href: "#about", text: "About" },
-          { href: "#contact", text: "Contact" }
+          { href: "/", text: "Home" },
+          { href: "/about", text: "About" },
+          { href: "/contact", text: "Contact" }
         ]} 
         logo={<div className="text-white font-bold">LOGO</div>}
       />

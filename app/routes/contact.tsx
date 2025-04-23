@@ -1,4 +1,5 @@
 import { type MetaFunction } from "@remix-run/node";
+import Navbar from 'app/components/navbar';
 
 export const meta: MetaFunction = () => {
   return [
@@ -9,6 +10,15 @@ export const meta: MetaFunction = () => {
 
 export default function Contact() {
   return (
+    <>
+        <Navbar 
+        links={[
+          { href: "/", text: "Home" },
+          { href: "/about", text: "About" },
+          { href: "/contact", text: "Contact" }
+        ]} 
+        logo={<div className="text-white font-bold">LOGO</div>}
+      />
     <div className="min-h-screen grid grid-rows-[7rem_1fr_auto_1fr] grid-cols-[5rem_1fr_1fr_1fr] sm:grid-cols-1 font-serif dark:bg-black dark:text-white">
       {/* Header */}
       <header className="col-span-full p-6 border-b-2">
@@ -57,5 +67,6 @@ export default function Contact() {
         <p>Thanks for visiting!</p>
       </footer>
     </div>
+    </>
   );
 }

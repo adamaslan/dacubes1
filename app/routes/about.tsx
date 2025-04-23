@@ -1,7 +1,16 @@
 import { useState } from 'react';
+import Navbar from 'app/components/navbar';
 
 export default function About() {
   return (
+    <>    <Navbar 
+    links={[
+      { href: "/", text: "Home" },
+      { href: "/about", text: "About" },
+      { href: "/contact", text: "Contact" }
+    ]} 
+    logo={<div className="text-white font-bold">LOGO</div>}
+  />
     <div className="grid-container">
       <style>
         {`
@@ -65,5 +74,6 @@ export default function About() {
         Thanks for visiting our page!
       </div>
     </div>
+    </>
   );
 }
