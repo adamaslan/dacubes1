@@ -17,7 +17,7 @@ export default function Index() {
     { name: 'AI Projects', link: '/aiprojects' },
     { name: 'Blender', link: '/blender' },
     { name: 'Contact', link: '/contact' },
-    { name: 'Beyond AI and CS', link: '/beyond' },  
+    { name: 'ThreeJS', link: '/threejs' },  
   ];
 
   return (
