@@ -8,65 +8,70 @@ export const meta: MetaFunction = () => {
   ];
 };
 
+const cssAnimations = `
+  @keyframes gradient {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+
+  .animate-gradient {
+    animation: gradient 15s ease infinite;
+  }
+
+  .font-marker {
+    font-family: 'Permanent Marker', cursive;
+  }
+`;
+
 export default function Contact() {
   return (
     <>
-        <Navbar 
+      <style dangerouslySetInnerHTML={{ __html: cssAnimations }} />
+      
+      <Navbar
         links={[
           { href: "/", text: "Home" },
           { href: "/about", text: "About" },
           { href: "/contact", text: "Contact" }
-        ]} 
-        logo={<div className="text-white font-bold">LOGO</div>}
+        ]}
+        logo={<div className="text-white font-bold font-marker">LOGO</div>}
       />
-    <div className="min-h-screen grid grid-rows-[7rem_1fr_auto_1fr] grid-cols-[5rem_1fr_1fr_1fr] sm:grid-cols-1 font-serif dark:bg-black dark:text-white">
-      {/* Header */}
-      <header className="col-span-full p-6 border-b-2">
-        <h1 className="text-3xl font-bold">Adam Timur Aslan → Frontend Developer</h1>
-      </header>
+      
+      <div 
+        className="min-h-screen relative animate-gradient"
+        style={{
+          background: "linear-gradient(125deg, #ff00cc, #3333ff, #00ccff, #33cc33, #ff6600)",
+          backgroundSize: "400% 400%",
+          padding: '2rem'
+        }}
+      >
+        <div className="max-w-2xl mx-auto">
+          {/* Bio Section */}
+          <div className="bg-white bg-opacity-10 backdrop-blur-sm p-6 rounded-lg mt-8">
+            <p className="text-xl text-white font-marker">
+              Based in Brooklyn, interested in all things 3D art, music, and full-stack development for over 8 years. Lets Connect!
+            </p>
+          </div>
 
-      {/* Sidebar */}
-      <aside className="border-r-4 p-4">
-        <div className="[writing-mode:vertical-rl] transform rotate-180 text-lg">
-          –› Hey!
-        </div>
-      </aside>
-
-      {/* Main Content */}
-      <main className="col-span-2 p-8 rotate-1">
-        <div className="space-y-6">
-          <p className="text-xl">
-            Based in Brooklyn, interested in all things 3D art, music, and full-stack development for over 8 years.
-          </p>
-          
-          <div className="space-y-4">
-            <a 
-              href="https://linkedin.com/in/adamaslan" 
-              className="block text-blue-600 dark:text-blue-400 hover:underline"
+          {/* Links Section */}
+          <div className="mt-8 space-y-4">
+            <a
+              href="https://linkedin.com/in/adamaslan"
+              className="block text-white p-4 bg-blue-600 hover:bg-blue-700 transition-colors font-marker rounded-lg text-center"
             >
-              → Please visit my LinkedIn page :)
+              LinkedIn Profile
             </a>
             
-            <div className="border-t-[50px] border-black dark:border-white p-4 -rotate-2">
-              <p>Download our custom font Utopia Serif... you can have it for free!</p>
-            </div>
+            <a
+              href="https://github.com/adamaslan"
+              className="block text-white p-4 bg-gray-800 hover:bg-gray-900 transition-colors font-marker rounded-lg text-center"
+            >
+              GitHub Profile
+            </a>
           </div>
         </div>
-      </main>
-
-      {/* Additional Content */}
-      <aside className="p-6 rotate-2">
-        <div className="border-2 p-4">
-          {/* Placeholder for Tic-Tac-Toe game */}
-          <div className="text-center">Tic-Tac-Toe Game Coming Soon!</div>
-        </div>
-      </aside>
-
-      {/* Footer */}
-      <footer className="col-span-full text-center p-4 border-t-2">
-        <p>Thanks for visiting!</p>
-      </footer>
-    </div>
+      </div>
     </>
   );
 }
