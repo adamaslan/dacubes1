@@ -58,7 +58,7 @@ export default function About() {
       <div className="grid-item" style={{ backgroundColor: '#96CEB4' }}>
         + - + - + - + - + - + - + - + -
       </div>
-      <div className="grid-item" style={{ backgroundColor: '#FFEEAD' }}>
+      <div className="grid-item" style={{ backgroundColor: '#4EEEED' }}>
       I hope to bring a sort of customer facing communication skill set to whatever techy role I am, which hopefully begs the question: “why isn’t this person a solutions architect or some other role that involves technical skills and the type of communication that resolves pain points and inspires?”
       </div>
       <div className="grid-item" style={{ backgroundColor: '#D4A5A5' }}>
