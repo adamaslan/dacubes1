@@ -1,5 +1,8 @@
 module.exports = {
-  // ... other config options ...
+  content: [
+    "./app/**/*.{js,jsx,ts,tsx}",
+    "./public/index.html"
+  ],
   theme: {
     extend: {
       keyframes: {
