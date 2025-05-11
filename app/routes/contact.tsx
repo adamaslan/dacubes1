@@ -63,7 +63,7 @@ export default function Contact() {
             </a>
             
             {/* Added two more links to demonstrate the responsive grid */}
-            <a
+            {/* <a
               href="mailto:contact@adamaslan.com"
               className="p-4 rounded-xl bg-green-600/90 hover:bg-green-700 transition-all duration-300 
                        flex items-center justify-center space-x-2 group animate-float-spin col-span-1"
@@ -74,10 +74,10 @@ export default function Contact() {
               <span className="text-white text-base md:text-xl font-marker group-hover:animate-pulse">
                 Email
               </span>
-            </a>
+            </a> */}
             
             <a
-              href="https://twitter.com/adamaslan"
+              href="https://twitter.com/tastytechbytes"
               className="p-4 rounded-xl bg-blue-400/90 hover:bg-blue-500 transition-all duration-300 
                        flex items-center justify-center space-x-2 group animate-float-spin col-span-1"
             >
