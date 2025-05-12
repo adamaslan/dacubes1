@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@p5-wrapper/react": "^4.4.2",
+    "@remix-run/netlify": "^1.19.3",
     "@remix-run/node": "^2.15.2",
     "@remix-run/react": "^2.15.2",
     "@remix-run/serve": "^2.15.2",
