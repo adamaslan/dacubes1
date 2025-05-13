@@ -14,8 +14,8 @@ export const meta: MetaFunction = () => {
 export default function Index() {
   const customCubes = [
     { name: 'Frontend', link: '/frontend' },
-    { name: 'AI Projects', link: '/aiprojects' },
-    { name: 'Blender', link: '/blender' },
+    // { name: 'AI Projects', link: '/aiprojects' },
+    // { name: 'Blender', link: '/blender' },
     { name: 'Contact', link: '/contact' },
     { name: 'ThreeJS', link: '/threejs' },  
   ];
