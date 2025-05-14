@@ -1,8 +1,11 @@
 // routes/_index.tsx
-import React from "react";
+import React, { Suspense, lazy } from "react";
 import Navbar from "~/components/navbar";
 import type { MetaFunction } from "@remix-run/node";
-import DaCubes4 from "~/components/three4";
+import ThreeJSWrapper from "~/components/ThreeJSWrapper";
+
+// Lazy load the Three.js component
+const DaCubes4 = lazy(() => import("~/components/three4"));
 
 export const meta: MetaFunction = () => {
   return [
@@ -14,8 +17,6 @@ export const meta: MetaFunction = () => {
 export default function Index() {
   const customCubes = [
     { name: 'Frontend', link: '/frontend' },
-    // { name: 'AI Projects', link: '/aiprojects' },
-    // { name: 'Blender', link: '/blender' },
     { name: 'Contact', link: '/contact' },
     { name: 'ThreeJS', link: '/threejs' },  
   ];
@@ -37,11 +38,15 @@ export default function Index() {
         </h1>
       </div>
 
-      <DaCubes4 
-        cubes={customCubes}
-        textSize={0.8}
-        engraveDepth={0.3}
-        fontUrl="https://cdn.jsdelivr.net/npm/three@0.132.2/examples/fonts/helvetiker_regular.typeface.json"
+      <ThreeJSWrapper
+        component={DaCubes4}
+        props={{
+          cubes: customCubes,
+          textSize: 0.8,
+          engraveDepth: 0.3,
+          fontUrl: "https://cdn.jsdelivr.net/npm/three@0.132.2/examples/fonts/helvetiker_regular.typeface.json"
+        }}
+        loadingMessage="Loading 3D navigation..."
       />
     </div>
   );
