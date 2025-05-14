@@ -1,6 +1,8 @@
-import React, { Suspense, lazy } from "react";
+import React, { lazy } from "react";
 import Navbar from "~/components/navbar";
 import type { MetaFunction } from "@remix-run/node";
+import P5Wrapper from "~/components/P5Wrapper";
+
 const DaCubes = lazy(() => import("../components/p5cube1"));
 
 export const meta: MetaFunction = () => {
@@ -12,22 +14,21 @@ export const meta: MetaFunction = () => {
 
 export default function Index2() {
   const navLinks = [
-    { href: "#home", text: "Home" }, // Example links
+    { href: "#home", text: "Home" },
     { href: "#about", text: "About" },
     { href: "#contact", text: "Contact" },
   ];
 
-  const logo = <div>My Logo</div>; // Example logo
+  const logo = <div>My Logo</div>;
 
   return (
-    <div>{/* Important: Wrap everything in a div */}
+    <div>
       <Navbar links={navLinks} logo={logo} />
-      <div className="flex h-screen items-center justify-center pt-20"> {/* Added top padding */}
+      <div className="flex h-screen items-center justify-center pt-20">
         <div className="flex flex-col items-center gap-16">
           <header className="flex flex-col items-center gap-9">
             <h1 className="leading text-2xl font-bold text-gray-800 dark:text-gray-100">
               ThreeJS <span className="sr-only">Remix</span>
-            
             </h1>
             <div className="h-[144px] w-[434px]">
               {/* Your image or other content here */}
@@ -38,15 +39,10 @@ export default function Index2() {
               What&apos;s next?
             </p>
             
-            
-             <Suspense fallback={<div>Loading...</div>}>
-                          {/* The `Cam` component will load only on the client */}
-                          <DaCubes/>
-                        </Suspense>
-            
-       
-         
-          
+            <P5Wrapper
+              component={DaCubes}
+              loadingMessage="Loading P5 visualization..."
+            />
           </nav>
         </div>
       </div>

@@ -6,6 +6,7 @@ import {
   ScrollRestoration,
 } from "@remix-run/react";
 import type { LinksFunction } from "@remix-run/node";
+import { Suspense } from "react";
 
 import "./tailwind.css";
 
@@ -32,7 +33,9 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Links />
       </head>
       <body className="bg-white dark:bg-gray-950">
-        {children}
+        <Suspense fallback={<div className="flex h-screen items-center justify-center">Loading application...</div>}>
+          {children}
+        </Suspense>
         <ScrollRestoration />
         <Scripts />
       </body>
